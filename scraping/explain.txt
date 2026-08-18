@@ -1,0 +1,9 @@
+En este servicio de python se encargara de las siguientes funcionalidades:
+
+1. Hacer fetch a todos los indicadores economicos predeterminados para un buen analisis institucional (Investing)
+
+2. Tratamiento del html, donde se extraerá el titulo del indicador, el precio actual, y cuando ha variado con
+    respecto al dia anterior
+
+3. Creará un diccionario ya preparado con la estructura esperada para hacer un post a un servicio de spring con
+toda la informacion tratara y estructurada
