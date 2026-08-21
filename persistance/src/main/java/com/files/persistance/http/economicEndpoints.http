@@ -1,0 +1,18 @@
+### Guardar los datos de los indicadores economicos
+POST http://localhost:8080/economic HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "data": [
+        {
+            "name": "vix",
+            "priceLast": "17.03",
+            "priceChange": "+0.006",
+            "priceChangePercent": "+3.04%"
+        }
+    ]
+}
+
+### obtener todos los datos
+GET http://localhost:8080/economic HTTP/1.1

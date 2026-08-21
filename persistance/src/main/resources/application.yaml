@@ -1,3 +1,19 @@
 spring:
   application:
     name: persistance
+
+  r2dbc: 
+    url: r2dbc:postgresql://localhost:5432/tradingAnalytics
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  
+  flyway:
+    url: jdbc:postgresql://localhost:5432/tradingAnalytics
+    user: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    locations:
+    - classpath:db/migrations # classpath hace referencia a src/resources
+    
+
+server:
+  port: 8080
