@@ -1,5 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import MarketOverview from "../components/MarketOverview.astro";
+import DailyPerformance from "../components/DailyPerformance.astro";
+import WatchList from "../components/WatchList.astro";
+import Header from "../components/header.astro";
 ---
 
-<Layout />
+<Layout>
+  <Header />
+
+  <div
+    class="w-full max-w-350 mx-auto min-h-[calc(100vh-80px)] p-4 md:p-6"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <main class="lg:col-span-8 flex flex-col gap-6">
+        <MarketOverview />
+        <DailyPerformance />
+      </main>
+
+      <aside class="lg:col-span-4 lg:sticky lg:top-6">
+        <WatchList />
+      </aside>
+    </div>
+  </div>
+</Layout>
