@@ -7,6 +7,7 @@ Accept: application/json
     "data": [
         {
             "name": "vix",
+            "fullname": "Vix indicator",
             "priceLast": "17.03",
             "priceChange": "+0.006",
             "priceChangePercent": "+3.04%"
