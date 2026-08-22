@@ -1,0 +1,171 @@
+---
+import DownloadIcon from "../assets/download.svg";
+import FilterIcon from "../assets/filter.svg";
+
+const performanceData = [
+  {
+    date: "Jun 14",
+    sub: "Today",
+    sp500: "5,432.26",
+    spChange: "+0.34%",
+    vix: "17.03",
+    vixChange: "+3.04%",
+    us10y: "4.284%",
+    us10yChange: "-0.74%",
+    session: "Open",
+  },
+  {
+    date: "Jun 13",
+    sub: "2024",
+    sp500: "5,413.85",
+    spChange: "+0.77%",
+    vix: "16.53",
+    vixChange: "-1.61%",
+    us10y: "4.316%",
+    us10yChange: "+0.28%",
+    session: "Open",
+  },
+  {
+    date: "Jun 12",
+    sub: "2024",
+    sp500: "5,372.85",
+    spChange: "+0.85%",
+    vix: "16.80",
+    vixChange: "-0.83%",
+    us10y: "4.304%",
+    us10yChange: "-0.51%",
+    session: "Open",
+  },
+  {
+    date: "Jun 11",
+    sub: "2024",
+    sp500: "5,328.03",
+    spChange: "-0.27%",
+    vix: "16.94",
+    vixChange: "+2.73%",
+    us10y: "4.326%",
+    us10yChange: "+1.12%",
+    session: "Open",
+  },
+  {
+    date: "Jun 10",
+    sub: "2024",
+    sp500: "5,343.75",
+    spChange: "+0.77%",
+    vix: "16.49",
+    vixChange: "-3.23%",
+    us10y: "4.278%",
+    us10yChange: "-0.38%",
+    session: "Open",
+  },
+];
+
+const timeframes = ["1D", "1W", "1M", "3M", "YTD"];
+const activeTimeframe = "1W";
+---
+
+<section class="w-full font-sans text-gray-900 my-4">
+  <div class="flex items-center justify-between mb-4">
+    <div class="inline-flex p-1 bg-gray-100 rounded-lg border border-gray-200">
+      {
+        timeframes.map((tf) => (
+          <button
+            class={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
+              tf === activeTimeframe
+                ? "bg-white text-gray-900 shadow-sm border border-gray-200"
+                : "text-gray-500 hover:text-gray-900"
+            }`}
+          >
+            {tf}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="flex items-center gap-4 text-xs text-gray-500">
+      <span>Updated 2 min ago</span>
+      <button
+        class="flex items-center gap-1.5 px-3 py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50 font-medium text-gray-700 transition-colors"
+      >
+        <DownloadIcon />
+        Export
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Card -->
+  <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+    <!-- Card Header -->
+    <div class="flex items-start justify-between mb-6">
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 tracking-tight">
+          Daily performance
+        </h2>
+        <p class="text-xs text-gray-500 mt-0.5">
+          Compare daily movement across key indicators
+        </p>
+      </div>
+      <button
+        class="flex items-center gap-1.5 px-3 py-1.5 border border-gray-200 rounded-lg text-xs font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+      >
+        <FilterIcon />
+        Customize
+      </button>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs">
+        <thead>
+          <tr
+            class="text-gray-400 font-semibold border-b border-gray-100 uppercase tracking-wider"
+          >
+            <th class="pb-3 font-semibold">DATE</th>
+            <th class="pb-3 font-semibold">S&P 500</th>
+            <th class="pb-3 font-semibold">VIX</th>
+            <th class="pb-3 font-semibold">US 10Y</th>
+            <th class="pb-3 font-semibold">SESSION</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          {
+            performanceData.map((row) => (
+              <tr class="hover:bg-gray-50/60 transition-colors">
+                <td class="py-3.5 whitespace-nowrap">
+                  <span class="font-bold text-gray-900">{row.date}</span>{" "}
+                  <span class="text-gray-400 ml-1">{row.sub}</span>
+                </td>
+                <td class="py-3.5 whitespace-nowrap">
+                  <span class="font-bold text-gray-900">{row.sp500}</span>{" "}
+                  <span
+                    class={`ml-1 font-medium ${row.spChange.startsWith("+") ? "text-emerald-600" : "text-rose-600"}`}
+                  >
+                    {row.spChange}
+                  </span>
+                </td>
+                <td class="py-3.5 whitespace-nowrap">
+                  <span class="font-bold text-gray-900">{row.vix}</span>{" "}
+                  <span
+                    class={`ml-1 font-medium ${row.vixChange.startsWith("+") ? "text-emerald-600" : "text-rose-600"}`}
+                  >
+                    {row.vixChange}
+                  </span>
+                </td>
+                <td class="py-3.5 whitespace-nowrap">
+                  <span class="font-bold text-gray-900">{row.us10y}</span>{" "}
+                  <span
+                    class={`ml-1 font-medium ${row.us10yChange.startsWith("+") ? "text-emerald-600" : "text-rose-600"}`}
+                  >
+                    {row.us10yChange}
+                  </span>
+                </td>
+                <td class="py-3.5 whitespace-nowrap font-medium text-gray-900">
+                  {row.session}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

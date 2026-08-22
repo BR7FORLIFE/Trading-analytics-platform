@@ -1,0 +1,62 @@
+---
+import type { IndicatorInfoType as Props } from "../../types/global-types";
+
+const { name, fullname, priceLast, priceChange, priceChangePercent } =
+  Astro.props as Props;
+
+const isPositive =
+  !priceChangePercent.startsWith("-") && !priceChange.startsWith("-");
+const badgeText = name ? name.substring(0, 2).toUpperCase() : "";
+---
+
+<div
+  class="flex items-center justify-between p-3 bg-white border border-gray-100 rounded-xl hover:bg-gray-50/80 transition-colors shadow-sm"
+>
+  <div class="flex items-center gap-3">
+    <div
+      class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center font-bold text-xs text-gray-700 tracking-wider"
+    >
+      {badgeText}
+    </div>
+    <div class="flex flex-col">
+      <span class="text-base font-bold text-gray-900 leading-tight">{name}</span
+      >
+      <span class="text-xs text-gray-500 font-medium">{fullname}</span>
+    </div>
+  </div>
+
+  <div class="flex flex-col items-end">
+    <span class="text-sm font-bold text-gray-900 leading-tight"
+      >{priceLast}</span
+    >
+    <div
+      class={`flex items-center gap-0.5 text-xs font-semibold ${isPositive ? "text-emerald-600" : "text-rose-600"}`}
+    >
+      <svg
+        class={`w-3 h-3 transition-transform ${!isPositive ? "rotate-180" : ""}`}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M7 17L17 7M17 7H9M17 7V15"></path>
+      </svg>
+      <span>{priceChangePercent}</span>
+    </div>
+  </div>
+
+  <div class="w-16 h-8 flex items-center justify-end">
+    <svg class="w-full h-full overflow-visible" viewBox="0 0 60 20">
+      <path
+        d="M 0 15 Q 10 12, 15 17 T 30 10 T 45 6 T 60 2"
+        fill="none"
+        stroke={isPositive ? "#059669" : "#e11d48"}
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </div>
+</div>

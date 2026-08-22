@@ -1,0 +1,75 @@
+---
+import TradingIcon from "../assets/trading-icon.svg";
+---
+
+<header
+  class="w-full h-16 px-8 border-b border-gray-200 bg-white flex items-center justify-between"
+>
+  <div class="flex items-center gap-3">
+    <div
+      class="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100"
+    >
+      <TradingIcon width={28} height={28} />
+    </div>
+
+    <span class="text-lg font-semibold tracking-tight text-gray-950">
+      Trading Analytics Platform
+    </span>
+  </div>
+
+  <nav class="flex h-full items-center gap-8">
+    <a
+      href="/"
+      class="relative flex h-full items-center text-sm font-medium text-gray-950"
+    >
+      Overview
+      <span class="absolute bottom-0 left-0 h-0.5 w-full bg-gray-950"></span>
+    </a>
+
+    <a
+      href="/markets"
+      class="flex items-center text-sm font-medium text-gray-500 transition-colors hover:text-gray-950"
+    >
+      Markets
+    </a>
+
+    <a
+      href="/calendar"
+      class="flex items-center text-sm font-medium text-gray-500 transition-colors hover:text-gray-950"
+    >
+      Calendar
+    </a>
+  </nav>
+
+  <div class="flex items-center gap-4">
+    <button
+      type="button"
+      class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-950"
+      aria-label="Notifications"
+    >
+      <span class="text-lg">♧</span>
+    </button>
+
+    <button
+      type="button"
+      class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-950"
+      aria-label="Settings"
+    >
+      <span class="text-lg">⚙</span>
+    </button>
+
+    <div class="h-6 w-px bg-gray-200"></div>
+
+    <button type="button" class="flex items-center gap-3">
+      <div
+        class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-900 text-xs font-semibold text-white"
+      >
+        BD
+      </div>
+
+      <span class="text-sm font-medium text-gray-700"> Bryan </span>
+
+      <span class="text-xs text-gray-400"> ▼ </span>
+    </button>
+  </div>
+</header>

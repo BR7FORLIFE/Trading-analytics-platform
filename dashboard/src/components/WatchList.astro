@@ -1,0 +1,160 @@
+---
+import IndicatorItem from "./UI/IndicatorInfo.astro";
+import type { IndicatorInfoType } from "../types/global-types";
+
+import StarIcon from "../assets/star.svg";
+import SearchIcon from "../assets/search.svg";
+
+const indicators: IndicatorInfoType[] = [
+  {
+    name: "VIX",
+    fullname: "Volatility Index",
+    priceLast: "17.03",
+    priceChange: "+0.50",
+    priceChangePercent: "+3.04%",
+  },
+  {
+    name: "S&P 500",
+    fullname: "US Large Cap",
+    priceLast: "5,432.26",
+    priceChange: "+18.47",
+    priceChangePercent: "+0.34%",
+  },
+  {
+    name: "NASDAQ",
+    fullname: "US Tech 100",
+    priceLast: "17,688.88",
+    priceChange: "+65.12",
+    priceChangePercent: "+0.37%",
+  },
+  {
+    name: "DXY",
+    fullname: "US Dollar Index",
+    priceLast: "104.72",
+    priceChange: "-0.18",
+    priceChangePercent: "-0.17%",
+  },
+  {
+    name: "GOLD",
+    fullname: "Gold Futures",
+    priceLast: "2,341.60",
+    priceChange: "+12.80",
+    priceChangePercent: "+0.55%",
+  },
+  {
+    name: "WTI",
+    fullname: "Crude Oil Futures",
+    priceLast: "78.12",
+    priceChange: "-1.24",
+    priceChangePercent: "-1.56%",
+  },
+  {
+    name: "BTC/USD",
+    fullname: "Bitcoin / US Dollar",
+    priceLast: "67,418.20",
+    priceChange: "+840.10",
+    priceChangePercent: "+1.26%",
+  },
+  {
+    name: "US10Y",
+    fullname: "10Y Treasury Yield",
+    priceLast: "4.284%",
+    priceChange: "-0.032",
+    priceChangePercent: "-0.74%",
+  },
+  {
+    name: "EUR/USD",
+    fullname: "Euro / US Dollar",
+    priceLast: "1.0742",
+    priceChange: "+0.0018",
+    priceChangePercent: "+0.17%",
+  },
+  {
+    name: "COPPER",
+    fullname: "Copper Futures",
+    priceLast: "4.5120",
+    priceChange: "+0.048",
+    priceChangePercent: "+1.08%",
+  },
+];
+
+const selectedIndicator = indicators[1];
+---
+
+<aside
+  class="w-full max-w-sm bg-white border border-gray-200 rounded-2xl p-5 shadow-sm font-sans flex flex-col gap-4 text-gray-900"
+>
+  <div class="flex items-start justify-between">
+    <div>
+      <h2 class="text-xl font-bold tracking-tight text-gray-900">Watchlist</h2>
+      <p class="text-xs text-gray-500 font-medium mt-0.5">
+        {indicators.length} indicators tracked
+      </p>
+    </div>
+    <button
+      class="text-gray-400 hover:text-yellow-500 transition-colors p-1"
+      aria-label="Favorite"
+    >
+      <StarIcon />
+    </button>
+  </div>
+
+  <div class="relative">
+    <div
+      class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400"
+    >
+      <SearchIcon />
+    </div>
+    <input
+      type="text"
+      placeholder="Search indicators..."
+      class="w-full pl-9 pr-3 py-2 text-xs bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition-all"
+    />
+  </div>
+
+  <div class="flex flex-col gap-1.5 overflow-y-auto max-h-130 pr-1">
+    {
+      indicators.map((indicator) => {
+        const isSelected = indicator.name === selectedIndicator.name;
+        return (
+          <div
+            class={`rounded-xl transition-all ${isSelected ? "bg-gray-100 border border-gray-300/80 shadow-inner" : "hover:bg-gray-50"}`}
+          >
+            <IndicatorItem {...indicator} />
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <div
+    class="bg-gray-900 text-white rounded-xl p-4 mt-1 border border-gray-800 shadow-md"
+  >
+    <div
+      class="flex items-center justify-between text-xs text-gray-400 font-medium mb-2"
+    >
+      <span>Selected indicator</span>
+      <span>1W view</span>
+    </div>
+
+    <div class="flex items-end justify-between">
+      <div>
+        <h3 class="text-lg font-bold text-white tracking-tight">
+          {selectedIndicator.name}
+        </h3>
+        <p class="text-2xl font-bold tracking-tight text-white mt-0.5">
+          {selectedIndicator.priceLast}
+        </p>
+      </div>
+
+      <div class="text-right flex flex-col items-end">
+        <span class="text-xs font-semibold text-emerald-400"
+          >{selectedIndicator.priceChange}</span
+        >
+        <span class="text-xs font-semibold text-emerald-400"
+          >{selectedIndicator.priceChangePercent}</span
+        >
+      </div>
+    </div>
+  </div>
+</aside>
